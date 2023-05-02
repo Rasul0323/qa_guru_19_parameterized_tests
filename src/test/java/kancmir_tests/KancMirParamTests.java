@@ -84,8 +84,6 @@ public class KancMirParamTests extends TestBase {
 
         $$x("//ul[@class = 'menu topest']/li/a").findBy(Condition.text(razdel)).click();
         $("h1").shouldHave(Condition.text(razdel));
-
-
     }
 }
 
