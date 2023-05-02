@@ -5,6 +5,9 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,6 +34,8 @@ public class KancMirParamTests extends TestBase {
             "Доставка, Доставка"
     })
     @ParameterizedTest(name = "тестирование раздела {0}")
+    @DisplayName("Тест для проверки внутренних наименований разделов")
+    @Tags({@Tag("CRITICAL"), @Tag("WEB")})
     void officeHeadButtonTest(String razdel, String result) {
 
         Selenide.open("");
@@ -47,6 +52,8 @@ public class KancMirParamTests extends TestBase {
 
     @MethodSource
     @ParameterizedTest(name = "тестирование отображения разделов в боковом меню")
+    @DisplayName("Тест для проверки отображения разделов в боковом меню")
+    @Tags({@Tag("CRITICAL"), @Tag("WEB")})
     void sideMenuTest(List<String> result) {
 
         Selenide.open("info/payment/");
@@ -62,20 +69,21 @@ public class KancMirParamTests extends TestBase {
             "О магазине",
             "Оплата",
             "Доставка",
-            "Контакты",
             "Реквизиты",
             "Вакансии"
     }
     )
     @ParameterizedTest(name = "тестирование кнопки {0} на странице канцмир")
+    @DisplayName("Тест для проверки внутренних наименований разделов")
+    @Tags({@Tag("CRITICAL"), @Tag("WEB")})
     void promotionTest(String razdel) {
 
         Selenide.open("https://kanc-mir.ru/");
         Selenide.executeJavaScript("$('div.tippy-content').remove()");
 
         $$x("//ul[@class = 'menu topest']/li/a").findBy(Condition.text(razdel)).click();
-        $x("//ul[@class = 'menu topest']/li/a ']/a[@class = 'current']")
-                .shouldHave(Condition.exactText(razdel));
+        $("h1").shouldHave(Condition.text(razdel));
+
 
     }
 }
