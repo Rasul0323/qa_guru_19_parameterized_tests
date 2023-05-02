@@ -44,6 +44,7 @@ public class KancMirParamTests extends TestBase {
         $$x("//ul//li//a").findBy(Condition.text(razdel)).click();
         $("h1").shouldHave(Condition.text(result));
     }
+
     static Stream<Arguments> sideMenuTest() {
         return Stream.of(
                 Arguments.of(List.of("Доставка", "Оплата", "Как сделать заказ", "Гарантии", "Возврат", "Вопросы и ответы", "Статьи"))
