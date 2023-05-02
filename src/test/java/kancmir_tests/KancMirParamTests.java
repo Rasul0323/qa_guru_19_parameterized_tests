@@ -22,12 +22,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class KancMirParamTests extends TestBase {
 
-    @BeforeEach
-    void setUp() {
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = "https://kanc-mir.ru/";
-    }
-
     @CsvSource(value = {
             "О магазине, О магазине",
             "Оплата, Оплата",
